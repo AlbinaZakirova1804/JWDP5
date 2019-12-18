@@ -1,7 +1,7 @@
 const uuid = require('uuid/v1');
 const Teddy = require('../models/Teddy');
 
-exports.getAllTeddies = (req, res, next) => {
+exports.getAllTeddies = (req, res, next) =>{
   Teddy.find().then(
     (teddies) => {
       const mappedTeddies = teddies.map((teddy) => {
