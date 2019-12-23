@@ -1,0 +1,13 @@
+
+
+h1 {
+    color: #964B00;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+    text-align: center;}
+
+img:hover {transform: scale(1.1)};
+
+.img-fluid {
+    width: 70%;
+    height: 70%;
+}

@@ -28,12 +28,13 @@ const newP = document.createElement('p');
 const newImg = document.createElement('img');
 
 newImg.src = products[i].imageUrl;
-section.setAttribute('class', 'row mx-5 my-5');
-newImg.setAttribute('class','rounded w-100');
-newDiv.setAttribute('class', 'col-sm-4 col-md-6');
+section.setAttribute('class', 'row mx-2 my-5');
+newImg.setAttribute('class','img-responsive rounded w-100');
+newImg.setAttribute('alt',"");
+newDiv.setAttribute('class', 'col-6 col-sm-4 col-lg-3');
 
 newH5.textContent = products[i].name;
-newP.textContent ='$'+ products[i].price;
+newP.textContent ='$'+ products[i].price/100;
 
 section.appendChild(newDiv);
 newDiv.appendChild(newImg);
@@ -41,3 +42,11 @@ newDiv.appendChild(newH5);
 newDiv.appendChild(newP);
  }
 }
+ 
+fetch("../includes/header.html")
+  .then(response => {
+    return response.text()
+  })
+  .then(data => {
+    document.querySelector("header").innerHTML = data;
+  });
