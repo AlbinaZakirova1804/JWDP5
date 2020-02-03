@@ -5,9 +5,20 @@ h1 {
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     text-align: center;}
 
-img:hover {transform: scale(1.1)};
+.card:hover { 
+    transform: scale(1.2);
+    cursor: pointer;
+    opacity: 0.5;    };
 
 .img-fluid {
     width: 70%;
     height: 70%;
+}
+
+p {
+    color: blue;
+}
+
+.card {
+    margin: 2%;
 }
