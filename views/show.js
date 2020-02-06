@@ -34,7 +34,8 @@ function showProduct(jsonObj) {
    const dropBut = document.createElement('button');
    const dropDown = document.createElement('div');
    const dropMenu = document.createElement('div');
-   const dropItem = document.createElement("a");
+   const dropItem = document.createElement("li");
+   const newUl = document.createElement('ul');
     
    newH5.textContent = product.name;
     
@@ -46,15 +47,18 @@ function showProduct(jsonObj) {
 
    dropBut.textContent = 'available colors';
 
+   
+
    section.setAttribute('class', 'row mx-2 my-5');
    aDiv.setAttribute('class', 'col-6');
    bDiv.setAttribute('class', 'col-6')
    newImg.setAttribute('class','img-responsive rounded w-100');
    dropDown.setAttribute('class', 'dropdown');
-   dropBut.setAttribute('class', 'btn btn-secondary btn-sm');
+   dropBut.setAttribute('class', 'btn btn-secondary dropdown-toggle btn-sm');
    dropItem.setAttribute('class', 'dropdown-item');
    newImg.setAttribute('alt',"teddy bear "+product.name);
    newBut.setAttribute('class', 'btn btn-primary');
+   newUl.setAttribute("class", "dropdown-menu");
     
     
     
@@ -66,12 +70,8 @@ function showProduct(jsonObj) {
    //building colors drop down
    aDiv.appendChild(dropDown);
    dropDown.appendChild(dropBut);
-   
-   var i;
-   for (i=0; i<=product.colors.lenght; i++){
-      dropItem.textContent = product.color[i];
-      dropMenu.appendChild(dropItem);
-   }
+   dropBut.appendChild(newUl);   
+  
 
   //colorsAvailable();
    bDiv.appendChild(newBut);
@@ -79,8 +79,8 @@ function showProduct(jsonObj) {
     console.log(product.colors);
     console.log(product.colors.length);
     
-    for (var i=0; i<=product.colors.length; i++){
-       console.log(product.colors[i]);
+    for (var i=0; i<product.colors.length; i++){
+       console.log(product.colors[i], i);
        dropItem.textContent = product.colors[i];
        dropMenu.appendChild(dropItem);
     }

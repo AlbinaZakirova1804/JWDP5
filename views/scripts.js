@@ -35,7 +35,9 @@ section.setAttribute('class', 'row mx-2 my-5');
 newImg.setAttribute('class','img-responsive rounded w-100');
 newImg.setAttribute('alt',"teddy bear"+i);
 newImg.setAttribute('id', products[i]._id);
-newA.setAttribute('href', './show.html');
+newA.setAttribute('href', `./teddy.html`+'?'+'_id='+`${products[i]._id}`);
+
+//newA.setAttribute('href', './show.html');
 //newA.setAttribute('onclick', 'return singleTeddyURL()');
 
 newDiv.setAttribute('class', 'card col-6 col-sm-4 col-lg-3');
@@ -51,24 +53,18 @@ newA.appendChild(newImg);
 //newDiv.appendChild(newImg);
 newDiv.appendChild(newH5);
 newDiv.appendChild(newP);
-}};
+};
 
-let globalVariable;
+//section.addEventListener('click', TeddyURL, false);
+//function TeddyURL(e)
+//{
+//if (e.target !== e.currentTarget){
+//    console.log(e.target);
+ //   let clicked = e.target.id;
 
-section.addEventListener('click', TeddyURL, false);
-function TeddyURL(e)
-{
-if (e.target !== e.currentTarget){
-    console.log(e.target);
-    let clicked = e.target.id;
-    console.log(clicked);
-    let globalVariable = `http://localhost:3000/api/teddies/?_id=${clicked}`;
-    console.log(globalVariable);
-   return globalVariable;
-}};
+    
+//    var a = document.getElementById(clicked);
 
-
-
-
-
-
+//    return clicked;
+//**********************************//
+}
