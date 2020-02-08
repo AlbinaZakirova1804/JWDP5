@@ -79,6 +79,8 @@ function showProduct(jsonObj) {
    dropSpan.setAttribute('class', "caret");
    
    addToCartBut.setAttribute('class', 'btn btn-primary');
+   addToCartBut.setAttribute('id', 'addToCart');
+
    newUl.setAttribute("class", "dropdown-menu");
     
 //***************built content on a page**************
@@ -111,14 +113,17 @@ function showProduct(jsonObj) {
        newUl.appendChild(dropItem);
     }
    //
+   localStorage.clear();
+   //listening to color drop down click Event
+document.getElementById('addToCart').addEventListener('click', () => {
+  localStorage.setItem('_id', getParameterByName('_id'));
+  alert('item was added to the cart');
+  console.log(localStorage);
+});
    }
+
 //building local storage
 
 // Listening to a click Event
 
-//listening to color drop down click Event
-var element = document.querySelectorAll('.dropItem');
-//addEventListener('click', function(){
- //  window.localStorage.setItem('color', `${dropItem.textContent}`);
-//   console.log(localStorage);
-//;
+
