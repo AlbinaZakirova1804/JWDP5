@@ -109,21 +109,53 @@ function showProduct(jsonObj) {
        console.log(product.colors[i], i);
        const dropItem = document.createElement("li");
        dropItem.setAttribute('class', 'dropdown-item');
+       dropItem.setAttribute('value', product.colors[i])
        dropItem.textContent = product.colors[i];
        newUl.appendChild(dropItem);
     }
    //
-   localStorage.clear();
-   //listening to color drop down click Event
+  localStorage.clear();
+  var item = product.name; 
+  item = {};
+  var pickedColor; 
+  item = {};
+  
+//listening to color drop down click Event----------------------
+//pick an elements from dropdown-menu//
+var elements = document.getElementsByClassName('dropdown-item');
+//get color//
+Array.from(elements).forEach((element) => {
+   var pickedColor;
+   element.addEventListener('click', (event) => {
+      var pickedColor = event.target.innerText;
+   console.log('Clicked '+ pickedColor+ '!');
+   item.color = pickedColor;
+   });
+});
+//-------------------------------------------------------------
+
+
+
 document.getElementById('addToCart').addEventListener('click', () => {
-  localStorage.setItem('_id', getParameterByName('_id'));
+
+console.log(product.name);
+
+//var item = product.name; 
+//item = {};
+
+
+
+//item.color=getColor;
+item.price = product.price/100;
+console.log( item );
+console.log(item.color);
+localStorage.setItem( product.name, JSON.stringify(item) );
+console.log( JSON.parse( localStorage.getItem( item ) ) );
+
   alert('item was added to the cart');
   console.log(localStorage);
 });
-   }
-
-//building local storage
-
-// Listening to a click Event
+};
+ 
 
 

@@ -4,6 +4,9 @@
 
 const section = document.querySelector('section');
 const main = document.querySelector('main');
+document.querySelector('header').innerHTML = 
+"<h2>navigation pending</h2>";
+
 
 
 //get json
