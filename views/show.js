@@ -113,14 +113,15 @@ function showProduct(jsonObj) {
        dropItem.textContent = product.colors[i];
        newUl.appendChild(dropItem);
     }
-   //
+   
   //localStorage.clear();
+  //define an item object
   var item = product.name; 
   item = {};
   //var pickedColor; 
   item = {};
   
-//listening to color drop down click Event----------------------
+//listening to color drop down click Event----------------------/
 //pick an elements from dropdown-menu//
 var elements = document.getElementsByClassName('dropdown-item');
 //get color//
