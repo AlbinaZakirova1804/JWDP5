@@ -145,13 +145,19 @@ function addToCart() {
          item.price = product.price/100;
          console.log( item );
          console.log(item.color);
-         if (localStorage.length !== 0)
+
+         var items = [];
+
+         if (localStorage.length == null)
          {
-            var items = [];
+            console.log('local storage is empty')
          }else
          {
-            console.log('I am a result '+localStorage.getItem('items'));
+            var retrievedData = localStorage.getItem("items");
+            var items = JSON.parse(retrievedData);
+            console.log('I am a result '+items);
          }
+         
 
          items.push(item);
          //inserting product object into local storage
