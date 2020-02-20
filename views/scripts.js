@@ -2,8 +2,8 @@
 
 //select elements on html
 
-const section = document.querySelector('section');
 const main = document.querySelector('main');
+const section = document.querySelector('section');
 document.querySelector('header').innerHTML = 
 "<h2>navigation pending</h2>";
 
@@ -34,6 +34,8 @@ const newP = document.createElement('p');
 const newImg = document.createElement('img');
 
 newImg.src = products[i].imageUrl;
+
+//set attributes
 section.setAttribute('class', 'row mx-2 my-5');
 newImg.setAttribute('class','img-responsive rounded w-100');
 newImg.setAttribute('alt',"teddy bear"+i);
@@ -45,10 +47,11 @@ newA.setAttribute('href', `./teddy.html`+'?'+'_id='+`${products[i]._id}`);
 
 newDiv.setAttribute('class', 'card col-6 col-sm-4 col-lg-3');
 
-
+//set content
 newH5.textContent = products[i].name;
 newP.textContent ='$'+ products[i].price/100;
 
+//built page
 section.appendChild(newDiv);
 newDiv.appendChild(newA);
 

@@ -131,54 +131,35 @@ Array.from(elements).forEach((element) => {
       var pickedColor = event.target.innerText;
    console.log('Clicked '+ pickedColor+ '!');
    item.color = pickedColor;
+   dropBut.textContent =item.color;
    });
 });
 //-------------------------------------------------------------
-
-
-
-//document.getElementById('addToCart').addEventListener('click', () => {
-// remove event listener if collor is not picked
-///if (item.color == null) {
-  // alert('Please choose you teddy color!' );
-  // this.removeEventListener('click',  );
-//} else{
-//console.log(product.name);
-
-//var item = product.name; 
-//item = {};
-
-
-
-//item.color=getColor;
-//item.price = product.price/100;
-//console.log( item );
-//console.log(item.color);
-//localStorage.setItem( product.name, JSON.stringify(item) );
-//console.log( JSON.parse( localStorage.getItem( item ) ) );
-
-//alert('item was added to the cart');
-//console.log(localStorage);
-//}
-//});
-//};
- 
 //****************************** */
 document.getElementById('addToCart').addEventListener('click', addToCart);
 function addToCart() {
    // remove event listener if collor is not picked
    if (item.color !== undefined) {
-   console.log(product.name);
-   //item.color=getColor;
-   item.price = product.price/100;
-   console.log( item );
-   console.log(item.color);
-   //inserting product object into local storage
-   localStorage.setItem( product.name, JSON.stringify(item) );
-   alert('item was added to the cart');
-   console.log(localStorage);
-   } else {alert('Please choose you teddy color!' );}
+         console.log(product.name);
+         //item.color=getColor;
+         item.price = product.price/100;
+         console.log( item );
+         console.log(item.color);
+         if (localStorage.length !== 0)
+         {
+            var items = [];
+         }else
+         {
+            console.log('I am a result '+localStorage.getItem('items'));
+         }
+
+         items.push(item);
+         //inserting product object into local storage
+         localStorage.setItem( 'items', JSON.stringify(items) );
+         alert('item was added to the cart');
+         console.log(localStorage);
+   } else 
+         {alert('Please choose you teddy color!' );}
    };
    };
 //***************************** */
-
