@@ -116,10 +116,10 @@ function showProduct(jsonObj) {
    
   //localStorage.clear();
   //define an item object
-  var item = product.name; 
+  //var item = product.name; 
   item = {};
   //var pickedColor; 
-  item = {};
+  
   
 //listening to color drop down click Event----------------------/
 //pick an elements from dropdown-menu//
@@ -142,20 +142,22 @@ function addToCart() {
    if (item.color !== undefined) {
          console.log(product.name);
          //item.color=getColor;
+         item.name = product.name;
          item.price = product.price/100;
          console.log( item );
          console.log(item.color);
 
          var items = [];
 
-         if (localStorage.length == null)
-         {
+         if (localStorage.length == 0)
+         {      
+
             console.log('local storage is empty')
          }else
          {
             var retrievedData = localStorage.getItem("items");
             var items = JSON.parse(retrievedData);
-            console.log('I am a result '+items);
+            console.log('local storage is not emprty');
          }
          
 
