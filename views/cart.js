@@ -8,28 +8,23 @@ const section = document.querySelector('section');
 //creat content 
 const containerDiv = document.createElement('div');
 const cartHeadding = document.createElement('h1');
-//const nameDiv = document.createElement('div');
-//const colorDiv = document.createElement('div');
-//const priceDiv = document.createElement('div');
-//const placeHolder = document.createElement('div');
 
 
 //set attrivutes
 section.setAttribute('class', 'row mx-2 my-3 text-center');
 cartHeadding.setAttribute('class', 'text-center m-y-5');
-//outerDiv.setAttribute('class', 'col-4');
+//containerDiv.setAttribute('class', 'row');
 
 cartHeadding.textContent = 'Welcome to your cart!';
-section.appendChild(cartHeadding);
+section.appendChild(containerDiv);
+containerDiv.appendChild(cartHeadding);
 
 
-//built page
-//section.appendChild(itemDiv);
 
 //set content
-//cartHeadding.textContent = 'Welcome to your cart!';
+
 //build the view of items in a cart
-if (localStorage.length == null)
+if (localStorage.length === 0)
          {
             console.log('local storage is empty');
             cartHeadding.textContent = 'Your cart is emty!';
@@ -39,7 +34,7 @@ if (localStorage.length == null)
             var items = JSON.parse(retrievedData);
             //building cart content
             items.forEach((item) => {
-                console.log(item.name);
+               // console.log(item.name);
                 const itemDiv = document.createElement('div');
                 itemDiv.setAttribute('class', 'container row');
                 section.appendChild(itemDiv);
@@ -61,9 +56,18 @@ if (localStorage.length == null)
                     itemDiv.appendChild(colorDiv);
                     colorDiv.appendChild(colorH6);
 
+//create qty Div
+                const qtyDiv = document.createElement('div');
+                        qtyDiv.setAttribute('class', 'item-qty col-2');
+                                const qtyH6 = document.createElement('h6');
+                                qtyH6.textContent = item.qty;
+
+                        itemDiv.appendChild(qtyDiv);
+                        qtyDiv.appendChild(qtyH6);
+
 //create price Div
                 const priceDiv = document.createElement('div');
-                        priceDiv.setAttribute('class', 'item-color col-3');
+                        priceDiv.setAttribute('class', 'item-color col-2');
                             const priceH6 = document.createElement('h6');
                             priceH6.textContent = '$'+item.price;
 
@@ -72,26 +76,36 @@ if (localStorage.length == null)
 
 // create remove button
                 const placeHolderDiv = document.createElement('div');
-                        placeHolderDiv.setAttribute('class', 'item-remove col-3');
+                        placeHolderDiv.setAttribute('class', 'item-remove col-2');
                         const removeBut = document.createElement('button');
                         removeBut.setAttribute('class', 'btn btn-link');
+                        removeBut.setAttribute('id', item.id);
                         removeBut.textContent = 'remove';
 
                     itemDiv.appendChild(placeHolderDiv);
                     placeHolderDiv.appendChild(removeBut);
                
 //********************************************************************************** */
+            }
              
-});
-
-            console.log('I am a cart');
-         };
-
-
+            )};
+            //const totalP = document.createElement(p);
+            //totalP.textContent = "TOTAL "
+            //containerDiv.appendChild(totalP);
 
 
+         
+        
 
 
-//for (var i = 0; storage.length < i; i++ ){
-    //console.log(localStorage.getItem('items'));
-//}
+
+
+
+//add listener event to REMOVE button
+         document.getElementsByClassName('btn btn-link').addEventListener('click', removeFromCart, false);
+         function removeFromCart(e) {
+                 if (e.target !== e.currentTarget) {
+                         var clickedItem = e.target.id;
+                         console.log(clickedItem);
+                 }
+         }

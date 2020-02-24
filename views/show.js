@@ -100,7 +100,7 @@ function showProduct(jsonObj) {
    dropBut.appendChild(dropSpan);
    dropDown.appendChild(newUl);   
 
-   //aDiv.appendChild(newImg);
+   
     console.log(product.colors);
     console.log(product.colors.length);
    
@@ -114,11 +114,9 @@ function showProduct(jsonObj) {
        newUl.appendChild(dropItem);
     }
    
-  //localStorage.clear();
-  //define an item object
-  //var item = product.name; 
+  localStorage.clear();
+  
   item = {};
-  //var pickedColor; 
   
   
 //listening to color drop down click Event----------------------/
@@ -142,26 +140,33 @@ function addToCart() {
    if (item.color !== undefined) {
          console.log(product.name);
          //item.color=getColor;
+         item.id = product._id
          item.name = product.name;
+         item.qty = 1;
          item.price = product.price/100;
          console.log( item );
          console.log(item.color);
 
          var items = [];
 
-         if (localStorage.length == 0)
+         if (localStorage.length === 0)
          {      
 
             console.log('local storage is empty')
+            items.push(item);
          }else
          {
             var retrievedData = localStorage.getItem("items");
             var items = JSON.parse(retrievedData);
+            console.log('yaeh, im an array'+items)
+           // items.forEach((item)=> {
+            checkForDuplicates(items, item);
+            
             console.log('local storage is not emprty');
          }
          
-
-         items.push(item);
+         console.log(items);
+        // items.push(item);
          //inserting product object into local storage
          localStorage.setItem( 'items', JSON.stringify(items) );
          alert('item was added to the cart');
@@ -171,3 +176,24 @@ function addToCart() {
    };
    };
 //***************************** */
+
+function checkForDuplicates(items, item){
+   items.forEach(element=> {
+       console.log(element.id);
+//does item already exist
+       if (item.id !== element.id) {
+       //if yes push
+       //console.log('I an a new item!');
+       items.push(item);
+       } else if (item.color !== element.color){
+       items.push(item);
+//console.log('I do exist but ');
+       } else {
+   var index = items.indexOf(element);
+   console.log(index);
+   items[index].qty += 1;
+   
+   console.log("my quantaty was changed to -> "+ items[index].qty);
+       }
+   } )
+}
