@@ -69,7 +69,7 @@ if (localStorage.length === 0)
                 const priceDiv = document.createElement('div');
                         priceDiv.setAttribute('class', 'item-color col-2');
                             const priceH6 = document.createElement('h6');
-                            priceH6.textContent = '$'+item.price;
+                            priceH6.textContent = '$'+item.price*item.qty;
 
                     itemDiv.appendChild(priceDiv);
                     priceDiv.appendChild(priceH6);
