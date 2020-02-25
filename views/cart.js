@@ -6,18 +6,28 @@ const main = document.querySelector('main');
 const section = document.querySelector('section');
 
 //creat content 
-const containerDiv = document.createElement('div');
+const wrapContainerDiv = document.createElement('div');
+const wrapCartItemsInfo = document.createElement('div');
+const wrapCartItemsRemove = document.createElement('div');
 const cartHeadding = document.createElement('h1');
 
 
 //set attrivutes
-section.setAttribute('class', 'row mx-2 my-3 text-center');
-cartHeadding.setAttribute('class', 'text-center m-y-5');
+section.setAttribute('class', 'container mx-2 my-3 text-center');
+//cartHeadding.setAttribute('class', 'text-center m-y-5');
 //containerDiv.setAttribute('class', 'row');
+wrapContainerDiv.setAttribute('class', 'container mt-5 row');
+wrapCartItemsInfo.setAttribute('class', 'col-10');
+wrapCartItemsInfo.setAttribute('id', 'left');
+wrapCartItemsRemove.setAttribute('class', 'remove container col-2');
+wrapCartItemsRemove.setAttribute('id', 'right');
+
 
 cartHeadding.textContent = 'Welcome to your cart!';
-section.appendChild(containerDiv);
-containerDiv.appendChild(cartHeadding);
+section.appendChild(cartHeadding);
+section.appendChild(wrapContainerDiv);
+wrapContainerDiv.appendChild(wrapCartItemsInfo);
+wrapContainerDiv.appendChild(wrapCartItemsRemove);
 
 
 
@@ -36,8 +46,8 @@ if (localStorage.length === 0)
             items.forEach((item) => {
                // console.log(item.name);
                 const itemDiv = document.createElement('div');
-                itemDiv.setAttribute('class', 'container row');
-                section.appendChild(itemDiv);
+                itemDiv.setAttribute('class', 'container row mt-3');
+                wrapCartItemsInfo.appendChild(itemDiv);
 //create name Div
                 const nameDiv = document.createElement('div');
                         nameDiv.setAttribute('class','item-name col-3')
@@ -58,7 +68,7 @@ if (localStorage.length === 0)
 
 //create qty Div
                 const qtyDiv = document.createElement('div');
-                        qtyDiv.setAttribute('class', 'item-qty col-2');
+                        qtyDiv.setAttribute('class', 'item-qty col-3');
                                 const qtyH6 = document.createElement('h6');
                                 qtyH6.textContent = item.qty;
 
@@ -67,23 +77,22 @@ if (localStorage.length === 0)
 
 //create price Div
                 const priceDiv = document.createElement('div');
-                        priceDiv.setAttribute('class', 'item-color col-2');
+                        priceDiv.setAttribute('class', 'item-color col-3');
                             const priceH6 = document.createElement('h6');
                             priceH6.textContent = '$'+item.price*item.qty;
 
                     itemDiv.appendChild(priceDiv);
                     priceDiv.appendChild(priceH6);
 
-// create remove button
-               // const placeHolderDiv = document.createElement('div');
-               //         placeHolderDiv.setAttribute('class', 'item-remove col-2');
-                //        const removeBut = document.createElement('button');
-                //        removeBut.setAttribute('class', 'btn btn-link');
-                //        removeBut.setAttribute('id', item.id);
-                //        removeBut.textContent = 'remove';
-//
-   //                 itemDiv.appendChild(placeHolderDiv);
-  //                  placeHolderDiv.appendChild(removeBut);
+//create remove button
+          //     const placeHolderDiv = document.createElement('div');
+   //                     placeHolderDiv.setAttribute('class', 'item-remove col-2');
+                       const removeBut = document.createElement('button');
+                        removeBut.setAttribute('class', 'btn btn-link mt-1 mb-1');
+                        removeBut.setAttribute('id', item.id);
+                     removeBut.textContent = 'remove';
+////
+                    wrapCartItemsRemove.appendChild(removeBut);
                
 //********************************************************************************** */
 
@@ -91,10 +100,8 @@ if (localStorage.length === 0)
              
             )};
             totalCartPrice(items);
-
-            //const totalP = document.createElement(p);
-            //totalP.textContent = "TOTAL "
-            //containerDiv.appendChild(totalP);
+            createTotalCartPriceContent(items);
+            
 
 
          
@@ -104,27 +111,20 @@ if (localStorage.length === 0)
 
 
 
-//add listener event to REMOVE button
-         document.getElementsByClassName('btn btn-link').addEventListener('click', removeFromCart, false);
-         function removeFromCart(e) {
-                 if (e.target !== e.currentTarget) {
-                         var clickedItem = e.target.id;
-                         console.log(clickedItem);
-                 }
-         }
+
 
 
 function totalCartPrice(items){
         let totalPrice = 0;
         retriveExistingLocalStorageData(items);
         items.forEach((item)=>{
-                console.log(item.price);
-        totalPrice += item.price
+        console.log(item.price);
+        totalPrice += item.price*item.qty 
         console.log(totalPrice);
         return totalPrice;
         });
-        console.log('total cart proce is '+totalPrice);
-        return totalCartPrice;
+        console.log('total cart price is '+totalPrice);
+        return totalPrice;
 }
 
 function retriveExistingLocalStorageData(items){
@@ -132,3 +132,40 @@ function retriveExistingLocalStorageData(items){
         var items = JSON.parse(retrievedData);
         return items;
 }
+
+function createTotalCartPriceContent(items){
+        const devider = document.createElement('hr');
+        const itemDiv = document.createElement('div');
+        const totalPriceDiv = document.createElement('div');
+        const totalH6 = document.createElement('h6');
+
+        itemDiv.setAttribute('class', 'container row');
+        totalH6.setAttribute('class', '');
+        devider.setAttribute('width', '90%');
+        totalPriceDiv.setAttribute('class', 'col-6');
+
+        totalH6.textContent = 'Total price: $'+totalCartPrice(items);
+        section.appendChild(devider);
+        section.appendChild(itemDiv);
+        itemDiv.appendChild(totalPriceDiv);
+        totalPriceDiv.appendChild(totalH6);
+}
+
+
+       // var allRemoveButtons = document.querySelectorAll('.btn');
+        
+        document.querySelector('').style.backgroundColor ='red';
+            
+       // console.log("Found", allRemoveButtons.length, "div which class starts with btn btn-link.");
+       // for (var i = 0; i < allButtons.length; i++) {
+       //         allButtons[i].addEventListener('click', function() {
+       //           console.clear();
+       //           console.log("You clicked:", this.innerHTML);
+       //         });
+      //  }
+
+
+function createOrderButton(){
+
+}
+
