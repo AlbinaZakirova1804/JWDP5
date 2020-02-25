@@ -101,7 +101,24 @@ if (localStorage.length === 0)
             )};
             totalCartPrice(items);
             createTotalCartPriceContent(items);
-            
+            var allRemoveButtons = document.querySelector("#right");
+allRemoveButtons.addEventListener("click", removeItem, false);
+
+function removeItem(e){
+                if (e.target !== e.currentTarget) {
+                    var clickedItem = e.target.id;
+                    alert("Hello " + clickedItem);
+                    retriveExistingLocalStorageData(items);
+                    items.forEach((obj)=> {
+                            if (obj.id === clickedItem) {}
+                            else {}
+                    })
+                    var index = items.indexOf(clickedItem);
+                    console.log(index);
+                console.log(items);
+                }
+                e.stopPropagation();
+}
 
 
          
@@ -154,7 +171,6 @@ function createTotalCartPriceContent(items){
 
        // var allRemoveButtons = document.querySelectorAll('.btn');
         
-        document.querySelector('').style.backgroundColor ='red';
             
        // console.log("Found", allRemoveButtons.length, "div which class starts with btn btn-link.");
        // for (var i = 0; i < allButtons.length; i++) {
