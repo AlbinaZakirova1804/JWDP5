@@ -90,6 +90,7 @@ if (localStorage.length === 0)
                        const removeBut = document.createElement('button');
                         removeBut.setAttribute('class', 'btn btn-link mt-1 mb-1');
                         removeBut.setAttribute('id', item.id);
+                        removeBut.setAttribute('color', item.color)
                      removeBut.textContent = 'remove';
 ////
                     wrapCartItemsRemove.appendChild(removeBut);
@@ -110,7 +111,7 @@ function removeItem(e){
                     alert("Hello " + clickedItem);
                     retriveExistingLocalStorageData(items);
                     items.forEach((obj)=> {
-                            if (obj.id === clickedItem) {}
+                            if ((obj.id === clickedItem)&&(obj.color ===e.target.color)) {}
                             else {}
                     })
                     var index = items.indexOf(clickedItem);
