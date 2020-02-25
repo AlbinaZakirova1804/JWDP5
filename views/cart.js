@@ -75,20 +75,23 @@ if (localStorage.length === 0)
                     priceDiv.appendChild(priceH6);
 
 // create remove button
-                const placeHolderDiv = document.createElement('div');
-                        placeHolderDiv.setAttribute('class', 'item-remove col-2');
-                        const removeBut = document.createElement('button');
-                        removeBut.setAttribute('class', 'btn btn-link');
-                        removeBut.setAttribute('id', item.id);
-                        removeBut.textContent = 'remove';
-
-                    itemDiv.appendChild(placeHolderDiv);
-                    placeHolderDiv.appendChild(removeBut);
+               // const placeHolderDiv = document.createElement('div');
+               //         placeHolderDiv.setAttribute('class', 'item-remove col-2');
+                //        const removeBut = document.createElement('button');
+                //        removeBut.setAttribute('class', 'btn btn-link');
+                //        removeBut.setAttribute('id', item.id);
+                //        removeBut.textContent = 'remove';
+//
+   //                 itemDiv.appendChild(placeHolderDiv);
+  //                  placeHolderDiv.appendChild(removeBut);
                
 //********************************************************************************** */
+
             }
              
             )};
+            totalCartPrice(items);
+
             //const totalP = document.createElement(p);
             //totalP.textContent = "TOTAL "
             //containerDiv.appendChild(totalP);
@@ -109,3 +112,23 @@ if (localStorage.length === 0)
                          console.log(clickedItem);
                  }
          }
+
+
+function totalCartPrice(items){
+        let totalPrice = 0;
+        retriveExistingLocalStorageData(items);
+        items.forEach((item)=>{
+                console.log(item.price);
+        totalPrice += item.price
+        console.log(totalPrice);
+        return totalPrice;
+        });
+        console.log('total cart proce is '+totalPrice);
+        return totalCartPrice;
+}
+
+function retriveExistingLocalStorageData(items){
+        var retrievedData = localStorage.getItem("items");
+        var items = JSON.parse(retrievedData);
+        return items;
+}
