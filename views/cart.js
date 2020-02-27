@@ -49,7 +49,7 @@ if (localStorage.length === 0)
                 var indexInArray = items.indexOf(item);
                // console.log(item.name);
                 const itemDiv = document.createElement('div');
-                itemDiv.setAttribute('class', `container row mt-3 index-${indexInArray}`);
+                itemDiv.setAttribute('class', 'container row mt-3');
                         itemDiv.setAttribute('id', 'div-'+indexInArray);
                 wrapCartItemsInfo.appendChild(itemDiv);
 //create name Div
@@ -93,8 +93,9 @@ if (localStorage.length === 0)
    //                     placeHolderDiv.setAttribute('class', 'item-remove col-2');
                         //var indexInArray = items.indexOf(item);
                        const removeBut = document.createElement('button');
-                        removeBut.setAttribute('class', `btn btn-link mt-1 mb-1 index-${indexInArray}`);
-                        //removeBut.setAttribute('id', 'btn-'+indexInArray );
+                        removeBut.setAttribute('class', 'btn btn-link mt-1 mb-1');
+                
+                        removeBut.setAttribute('id', indexInArray );
                        // removeBut.setAttribute('color', item.color)
                      removeBut.textContent = 'remove';
 ////
@@ -119,12 +120,12 @@ function removeItem(e){
                     console.log(items);
                     deleteObjFromLocalStorage(items, clickedButtonIndex);
                     /************************************************************/
-                    var elements = document.querySelector(`.index-${clickedButtonIndex}`);
-                    //var el2 = document.getElementById(`btn-${clickedButtonIndex}`);
-                    for (var i = 0; i < elements.length; i++) {
-                        console.log('im a selcted element'+el);
-                        elements[i].remove();
-                    }
+                    var elementDiv = document.getElementById(`div-${clickedButtonIndex}`);
+                    var elementBtn = document.getElementById(`${clickedButtonIndex}`);
+                    
+                        elementDiv.remove();
+                        elementBtn.remove();
+                    
                    
                        // el.remove();
                         //el2.remove();
