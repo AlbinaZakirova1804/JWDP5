@@ -50,56 +50,51 @@ if (localStorage.length === 0)
                // console.log(item.name);
                 const itemDiv = document.createElement('div');
                 itemDiv.setAttribute('class', 'container row mt-3');
-                        itemDiv.setAttribute('id', 'div-'+indexInArray);
+                itemDiv.setAttribute('id', 'div-'+indexInArray);
                 wrapCartItemsInfo.appendChild(itemDiv);
 //create name Div
                 const nameDiv = document.createElement('div');
-                        nameDiv.setAttribute('class','item-name col-3')
-                            const nameH6 =document.createElement('h6');
-                            nameH6.textContent = item.name;
+                nameDiv.setAttribute('class','item-name col-3')
+                const nameH6 =document.createElement('h6');
+                nameH6.textContent = item.name;
 
-                     itemDiv.appendChild(nameDiv);
-                     nameDiv.appendChild(nameH6);
+                itemDiv.appendChild(nameDiv);
+                nameDiv.appendChild(nameH6);
                 
 //create color Div
                 const colorDiv = document.createElement('div');
-                        colorDiv.setAttribute('class', 'item-color col-3');
-                            const colorH6 = document.createElement('h6');
-                            colorH6.textContent = item.color;
+                colorDiv.setAttribute('class', 'item-color col-3');
+                const colorH6 = document.createElement('h6');
+                colorH6.textContent = item.color;
 
-                    itemDiv.appendChild(colorDiv);
-                    colorDiv.appendChild(colorH6);
+                itemDiv.appendChild(colorDiv);
+                colorDiv.appendChild(colorH6);
 
 //create qty Div
                 const qtyDiv = document.createElement('div');
-                        qtyDiv.setAttribute('class', 'item-qty col-3');
-                                const qtyH6 = document.createElement('h6');
-                                qtyH6.textContent = item.qty;
+                qtyDiv.setAttribute('class', 'item-qty col-3');
+                const qtyH6 = document.createElement('h6');
+                qtyH6.textContent = item.qty;
 
-                        itemDiv.appendChild(qtyDiv);
-                        qtyDiv.appendChild(qtyH6);
+                itemDiv.appendChild(qtyDiv);
+                qtyDiv.appendChild(qtyH6);
 
 //create price Div
                 const priceDiv = document.createElement('div');
-                        priceDiv.setAttribute('class', 'item-color col-3');
-                            const priceH6 = document.createElement('h6');
-                            priceH6.textContent = '$'+item.price*item.qty;
+                priceDiv.setAttribute('class', 'item-color col-3');
+                const priceH6 = document.createElement('h6');
+                priceH6.textContent = '$'+item.price*item.qty;
 
-                    itemDiv.appendChild(priceDiv);
-                    priceDiv.appendChild(priceH6);
+                itemDiv.appendChild(priceDiv);
+                priceDiv.appendChild(priceH6);
 
 //create remove button
-          //     const placeHolderDiv = document.createElement('div');
-   //                     placeHolderDiv.setAttribute('class', 'item-remove col-2');
-                        //var indexInArray = items.indexOf(item);
-                       const removeBut = document.createElement('button');
-                        removeBut.setAttribute('class', 'btn btn-link mt-1 mb-1');
+                const removeBut = document.createElement('button');
+                removeBut.setAttribute('class', 'btn btn-link mt-1 mb-1');
                 
-                        removeBut.setAttribute('id', indexInArray );
-                       // removeBut.setAttribute('color', item.color)
-                     removeBut.textContent = 'remove';
-////
-                    wrapCartItemsRemove.appendChild(removeBut);
+                removeBut.setAttribute('id', indexInArray );
+                removeBut.textContent = 'remove';
+                wrapCartItemsRemove.appendChild(removeBut);
 
             }
              
@@ -125,89 +120,14 @@ function removeItem(e){
                     
                         elementDiv.remove();
                         elementBtn.remove();
-                    
-                   
-                       // el.remove();
-                        //el2.remove();
-                        //var priceH6 = document.getElementById('sum');
-                        //priceH6.remove();
 
                         totalCartPrice(items);
                         updateCartPrice(items);
-            //createTotalCartPriceContent(items);
                     /************************************************************/
                     console.log(localStorage);
                 }
                 e.stopPropagation();
 }
-                
-/*function buildCartContent(){
-        if (localStorage.length === 0)
-         {
-            console.log('local storage is empty');
-            cartHeadding.textContent = 'Your cart is emty!';
-}else
-         {
-            var retrievedData = localStorage.getItem("items");
-            var items = JSON.parse(retrievedData);
-            //building cart content
-            items.forEach((item) => {
-               // console.log(item.name);
-                const itemDiv = document.createElement('div');
-                itemDiv.setAttribute('class', 'container row mt-3');
-                wrapCartItemsInfo.appendChild(itemDiv);
-//create name Div
-                const nameDiv = document.createElement('div');
-                        nameDiv.setAttribute('class','item-name col-3')
-                            const nameH6 =document.createElement('h6');
-                            nameH6.textContent = item.name;
-
-                     itemDiv.appendChild(nameDiv);
-                     nameDiv.appendChild(nameH6);
-                
-//create color Div
-                const colorDiv = document.createElement('div');
-                        colorDiv.setAttribute('class', 'item-color col-3');
-                            const colorH6 = document.createElement('h6');
-                            colorH6.textContent = item.color;
-
-                    itemDiv.appendChild(colorDiv);
-                    colorDiv.appendChild(colorH6);
-
-//create qty Div
-                const qtyDiv = document.createElement('div');
-                        qtyDiv.setAttribute('class', 'item-qty col-3');
-                                const qtyH6 = document.createElement('h6');
-                                qtyH6.textContent = item.qty;
-
-                        itemDiv.appendChild(qtyDiv);
-                        qtyDiv.appendChild(qtyH6);
-
-//create price Div
-                const priceDiv = document.createElement('div');
-                        priceDiv.setAttribute('class', 'item-color col-3');
-                            const priceH6 = document.createElement('h6');
-                            priceH6.textContent = '$'+item.price*item.qty;
-
-                    itemDiv.appendChild(priceDiv);
-                    priceDiv.appendChild(priceH6);
-
-//create remove button
-          //     const placeHolderDiv = document.createElement('div');
-   //                     placeHolderDiv.setAttribute('class', 'item-remove col-2');
-                        var indexInArray = items.indexOf(item);
-                       const removeBut = document.createElement('button');
-                        removeBut.setAttribute('class', 'btn btn-link mt-1 mb-1');
-                        removeBut.setAttribute('id', indexInArray );
-                       // removeBut.setAttribute('color', item.color)
-                     removeBut.textContent = 'remove';
-////
-                    wrapCartItemsRemove.appendChild(removeBut);
-
-            }
-             
-            )};
-}*/
 
 function deleteObjFromLocalStorage(items, objIndex) {
         console.log('array items -> '+items+', obj index -> '+ objIndex);
@@ -215,17 +135,6 @@ function deleteObjFromLocalStorage(items, objIndex) {
         console.log('items was removed -> '+ removed +', items array after removal -> '+items);
         pushDataToLocalStorage(items);
 }
-
-
-         
-        
-
-
-
-
-
-
-
 
 function totalCartPrice(items){
         let totalPrice = 0;
@@ -281,9 +190,6 @@ function updateCartPrice(items){
         newTotalPrice.setAttribute('id', 'sum');
         newTotalPrice.textContent = 'Total price: $'+totalCartPrice(items);
         div.appendChild(newTotalPrice);
-
-
-
 }
 
 function createOrderButton(){

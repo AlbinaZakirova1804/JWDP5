@@ -4,7 +4,7 @@
 
 const main = document.querySelector('main');
 const section = document.querySelector('section');
-document.querySelector('header').innerHTML = 
+//document.querySelector('header').innerHTML = 
 "<h2>navigation pending</h2>";
 
 

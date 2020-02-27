@@ -3,6 +3,7 @@
 
 const section = document.querySelector('section');
 const main = document.querySelector('main');
+//*************************************** */
 
 //get params _id for a single teddy from current url
 function getParameterByName(key, url) {
@@ -15,9 +16,17 @@ function getParameterByName(key, url) {
    console.log(decodeURIComponent(results[2].replace(/\+/g, ' ')));
    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+//****************************************** */
+let dynamicURL = `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
+
+fetch(dynamicURL)
+.then(res => res.json())// response type
+.then(teddy =>showProduct(teddy))
+
+
 
 //get json object for single teddy
-let dynamicURL = `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
+/*let dynamicURL = `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
 let newrequest = new XMLHttpRequest();
 
 newrequest.open('GET', dynamicURL);
@@ -28,7 +37,7 @@ newrequest.send();
 newrequest.onload = function() { 
 const teddy = newrequest.response; 
 showProduct(teddy); }
-
+*/
 // ***************build content on a page*****************
 function showProduct(jsonObj) {
    const product = jsonObj;
