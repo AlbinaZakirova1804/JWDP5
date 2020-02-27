@@ -114,7 +114,7 @@ function showProduct(jsonObj) {
        newUl.appendChild(dropItem);
     }
    
- // localStorage.clear();
+ //localStorage.clear();
   
   item = {};
   
