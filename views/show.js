@@ -114,7 +114,7 @@ function showProduct(jsonObj) {
        newUl.appendChild(dropItem);
     }
    
-  localStorage.clear();
+ // localStorage.clear();
   
   item = {};
   
@@ -178,22 +178,16 @@ function addToCart() {
 //***************************** */
 
 function checkForDuplicates(items, item){
-   items.forEach(element=> {
-       console.log(element.id);
-//does item already exist
-       if (item.id !== element.id) {
-       //if yes push
-       //console.log('I an a new item!');
-       items.push(item);
-       } else if (item.color !== element.color){
-       items.push(item);
-//console.log('I do exist but ');
-       } else {
-   var index = items.indexOf(element);
-   console.log(index);
-   items[index].qty += 1;
-   
-   console.log("my quantaty was changed to -> "+ items[index].qty);
-       }
-   } )
+  
+ var obj = items.find(obj => (obj.id === item.id)&&(obj.color === item.color));
+if ( obj ) {
+   console.log('you already have the same item in the same color');
+   var index = items.indexOf(obj);
+          console.log(index);
+          items[index].qty += 1;
+} else {
+   items.push(item);
+   console.log('new item was added to your carts');
 }
+}
+

@@ -103,23 +103,30 @@ if (localStorage.length === 0)
             totalCartPrice(items);
             createTotalCartPriceContent(items);
             var allRemoveButtons = document.querySelector("#right");
-allRemoveButtons.addEventListener("click", removeItem, false);
+        allRemoveButtons.addEventListener("click", removeItem, false);
 
 function removeItem(e){
                 if (e.target !== e.currentTarget) {
-                    var clickedItem = e.target.id;
-                    alert("Hello " + clickedItem);
+                    //var clickedItem = e.target.id;
+                    alert("Hello " + e.target.id);
                     retriveExistingLocalStorageData(items);
-                    items.forEach((obj)=> {
-                            if ((obj.id === clickedItem)&&(obj.color ===e.target.color)) {}
-                            else {}
-                    })
-                    var index = items.indexOf(clickedItem);
-                    console.log(index);
-                console.log(items);
-                }
-                e.stopPropagation();
-}
+
+                    items.filter(obj => ((obj.id === clickedItem)&&(obj.color === e.target.color))
+                    //items.forEach((obj)=> {
+                    //        if (obj.id !== clickedItem){
+                    //                console.log('no match');
+                    //        } else if (obj.color === e.target.color) {
+                    //            var index = items.indexOf(obj);
+                     //           console.log(items[index]);
+                     //       }
+                     //       else { console.log('did not work!');}
+                   // })
+                   // var index = items.indexOf(clickedItem);
+                  //  console.log(index);
+                //console.log(items);
+               // }
+               // e.stopPropagation();
+//}
 
 
          
