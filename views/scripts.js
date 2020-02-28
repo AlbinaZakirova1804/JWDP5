@@ -1,17 +1,33 @@
 
 
 //select elements on html
-
 const main = document.querySelector('main');
 const section = document.querySelector('section');
-//document.querySelector('header').innerHTML = 
-"<h2>navigation pending</h2>";
 
 
-
-//get json
-
+//get all json objects
+async function getData() 
+        {
+            let requestURL = 'http://localhost:3000/api/teddies';
+            //await the response of the fetch call
+           let response = await fetch(requestURL);
+            //proceed once the first promise is resolved.
+           let data = await response.json()
+            //proceed only when the second promise is resolved
+            return data;
+        }
+//call getData function
+getData()
+.then(teddies => showProduct(teddies));//show the data
+/*
+//get json objects
 let requestURL = 'http://localhost:3000/api/teddies';
+fetch(requestURL)
+.then(res => res.json())// response type
+.then(teddies =>showProduct(teddies));
+*/
+//get json
+/*let requestURL = 'http://localhost:3000/api/teddies';
 let request = new XMLHttpRequest();
 
 request.open('GET', requestURL);
@@ -21,7 +37,7 @@ request.send();
 request.onload = function() { 
     const teddies = request.response; 
     console.log(teddies);
-showProduct(teddies); }
+showProduct(teddies); } */
 
 //Creating new Elements
 function showProduct(jsonObj) {
@@ -41,10 +57,6 @@ newImg.setAttribute('class','img-responsive rounded w-100');
 newImg.setAttribute('alt',"teddy bear"+i);
 newImg.setAttribute('id', products[i]._id);
 newA.setAttribute('href', `./teddy.html`+'?'+'_id='+`${products[i]._id}`);
-
-//newA.setAttribute('href', './show.html');
-//newA.setAttribute('onclick', 'return singleTeddyURL()');
-
 newDiv.setAttribute('class', 'card col-6 col-sm-4 col-lg-3');
 
 //set content
@@ -61,16 +73,4 @@ newDiv.appendChild(newH5);
 newDiv.appendChild(newP);
 };
 
-//section.addEventListener('click', TeddyURL, false);
-//function TeddyURL(e)
-//{
-//if (e.target !== e.currentTarget){
-//    console.log(e.target);
- //   let clicked = e.target.id;
-
-    
-//    var a = document.getElementById(clicked);
-
-//    return clicked;
-//**********************************//
 }

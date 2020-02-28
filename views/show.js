@@ -1,11 +1,10 @@
 
-//select elements placeholder on html
-
+//select placeholder on html
 const section = document.querySelector('section');
 const main = document.querySelector('main');
-//*************************************** */
+//****************************************/
 
-//get params _id for a single teddy from current url
+//get params _id for a single teddy from passed current url
 function getParameterByName(key, url) {
    if (!url) url = window.location.href;
    key = key.replace(/[\[\]]/g, '\\$&');
@@ -16,16 +15,32 @@ function getParameterByName(key, url) {
    console.log(decodeURIComponent(results[2].replace(/\+/g, ' ')));
    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
-//****************************************** */
-let dynamicURL = `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
+//*******************************************/
+//create single object url for request
+//let dynamicURL= `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
+//console.log();
+async function getData() 
+        {
+         let dynamicURL= `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
+            //await the response of the fetch call
+           let response = await fetch(dynamicURL);
+            //proceed once the first promise is resolved.
+           let data = await response.json()
+            //proceed only when the second promise is resolved
+            return data;
+        }
+//call getData function
+getData()
+.then(teddy => showProduct(teddy));//show the data
 
+//************************************************* */
+/*let dynamicURL = `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
+// get teddy object
 fetch(dynamicURL)
 .then(res => res.json())// response type
-.then(teddy =>showProduct(teddy))
+.then(teddy =>showProduct(teddy));
+*/
 
-
-
-//get json object for single teddy
 /*let dynamicURL = `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
 let newrequest = new XMLHttpRequest();
 
@@ -38,7 +53,8 @@ newrequest.onload = function() {
 const teddy = newrequest.response; 
 showProduct(teddy); }
 */
-// ***************build content on a page*****************
+
+// ***************build single object content on a web page*****************
 function showProduct(jsonObj) {
    const product = jsonObj;
    console.log(product);
@@ -60,16 +76,11 @@ function showProduct(jsonObj) {
    const newUl = document.createElement('ul');
     
 //******************add text content***************/
-   newH5.textContent = product.name;
-    
+   newH5.textContent = product.name; 
    newP.textContent = product.description;
-
    newImg.src = product.imageUrl;
-
    addToCartBut.textContent = "add to cart";
-
    dropBut.textContent = 'available colors';
-
    
 // set attributes to classes
    section.setAttribute('class', 'row mx-2 my-5');
@@ -92,7 +103,7 @@ function showProduct(jsonObj) {
 
    newUl.setAttribute("class", "dropdown-menu");
     
-//***************built content on a page**************
+//***************append/build content on a page**************
 //section -> left container aDiv -> newImg -> div dropDown ->...
 //        -> right container bDiv -> newH5 -> addToCartBut button
    section.appendChild(aDiv); 
@@ -124,9 +135,7 @@ function showProduct(jsonObj) {
     }
    
  //localStorage.clear();
-  
   item = {};
-  
   
 //listening to color drop down click Event----------------------/
 //pick an elements from dropdown-menu//
@@ -198,5 +207,16 @@ if ( obj ) {
    items.push(item);
    console.log('new item was added to your carts');
 }
-}
+};
 
+function colorValidation(item){
+   if (item.color !== undefined) {
+      console.log(product.name);
+      //if color exist creat an object
+      item.id = product._id
+      item.name = product.name;
+      item.qty = 1;
+      item.price = product.price/100;
+      console.log( item );
+      console.log(item.color);
+}}

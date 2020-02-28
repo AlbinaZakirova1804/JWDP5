@@ -97,11 +97,13 @@ if (localStorage.length === 0)
                 wrapCartItemsRemove.appendChild(removeBut);
 
             }
+
              
             )};
 
             totalCartPrice(items);
             createTotalCartPriceContent(items);
+            createOrderButton();
             /**************************************************************/
             var allRemoveButtons = document.querySelector("#right");
 allRemoveButtons.addEventListener("click", removeItem, false);
@@ -168,10 +170,11 @@ function createTotalCartPriceContent(items){
         const totalH6 = document.createElement('h6');
 
         itemDiv.setAttribute('class', 'container row');
+        itemDiv.setAttribute('id', 'price sum wrap container');
         totalH6.setAttribute('id', 'sum');
 
         devider.setAttribute('width', '90%');
-        totalPriceDiv.setAttribute('class', 'col-6');
+        totalPriceDiv.setAttribute('class', 'col-6 text-left');
         totalPriceDiv.setAttribute('id', 'sum-price-container');
 
         totalH6.textContent = 'Total price: $'+totalCartPrice(items);
@@ -193,6 +196,23 @@ function updateCartPrice(items){
 }
 
 function createOrderButton(){
+        //get element on web page
+        let itemDiv =document.getElementById('price sum wrap container');
+        console.log(itemDiv);
+        // create new container div 
+        let orderDiv = document.createElement('div');
+        orderDiv.setAttribute('class', 'col-6 text-right');
 
+        // create button
+        let orderButton = document.createElement('button');
+        orderButton.setAttribute('class', 'btn btn-success');
+        orderButton.setAttribute('id', 'order button');
+
+        //add text to the button
+        orderButton.textContent = "Prosess your order";
+
+        //build content
+        itemDiv.appendChild(orderDiv);
+        orderDiv.appendChild(orderButton);
 }
 
