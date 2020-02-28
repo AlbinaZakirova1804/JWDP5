@@ -204,9 +204,11 @@ function createOrderButton(){
         orderDiv.setAttribute('class', 'col-6 text-right');
 
         // create button
-        let orderButton = document.createElement('button');
+        let orderButton = document.createElement('a');
         orderButton.setAttribute('class', 'btn btn-success');
         orderButton.setAttribute('id', 'order button');
+        orderButton.setAttribute('type', 'button');
+        orderButton.setAttribute('href', 'order.html');
 
         //add text to the button
         orderButton.textContent = "Prosess your order";
