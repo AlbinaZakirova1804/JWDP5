@@ -73,6 +73,7 @@ function showProduct(jsonObj) {
    const newP = document.createElement('p');
    const newH5 = document.createElement('h5');
    const newImg = document.createElement('img');
+   const alertMessage = document.createElement('p'); //added to cart message 
 
 // create colors dropdown
    const addToCartBut = document.createElement('button');
@@ -97,6 +98,8 @@ function showProduct(jsonObj) {
    newImg.setAttribute('class','img-responsive rounded w-100');
    newImg.setAttribute('alt',"teddy bear "+product.name);
 
+   alertMessage.setAttribute('class', 'text-success');
+
    dropDown.setAttribute('class', 'dropdown');
    dropBut.setAttribute('class', 'btn btn-secondary dropdown-toggle btn-sm');
    dropBut.setAttribute("type", "button");
@@ -118,6 +121,7 @@ function showProduct(jsonObj) {
    bDiv.appendChild(newH5);   
    bDiv.appendChild(newP);
    bDiv.appendChild(addToCartBut);
+   bDiv.appendChild(alertMessage);
    //aDiv
    aDiv.appendChild(newImg);
    //building colors drop down
@@ -183,17 +187,18 @@ function addToCart() {
             var retrievedData = localStorage.getItem("items");
             var items = JSON.parse(retrievedData);
             console.log('yaeh, im an array'+items)
-           // items.forEach((item)=> {
+           
             checkForDuplicates(items, item);
             
             console.log('local storage is not emprty');
          }
          
          console.log(items);
-        // items.push(item);
+        
          //inserting product object into local storage
          localStorage.setItem( 'items', JSON.stringify(items) );
-         alert('item was added to the cart');
+         alertMessage.textContent = 'item successfully added to your cart';
+         //alert('item was added to the cart');
          console.log(localStorage);
    } else 
          {alert('Please choose you teddy color!' );}

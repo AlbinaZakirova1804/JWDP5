@@ -7,7 +7,8 @@ const section = document.querySelector('section');
 
 //get all json objects
 async function getData() 
-        {
+       {try
+            {
             let requestURL = 'http://localhost:3000/api/teddies';
             //await the response of the fetch call
            let response = await fetch(requestURL);
@@ -15,7 +16,15 @@ async function getData()
            let data = await response.json()
             //proceed only when the second promise is resolved
             return data;
+        } catch(e)
+        {
+            //if it fails, catch an error      
+           console.error(e)
+        }finally
+        {
+            console.log('There was an error loading data.Please make sure the server is on.');
         }
+    }
 //call getData function
 getData()
 .then(teddies => showProduct(teddies));//show the data

@@ -119,7 +119,7 @@ function removeItem(e){
                 if (e.target !== e.currentTarget) {
                     var clickedButtonIndex = e.target.id;
                     console.log(clickedButtonIndex);
-                    alert("Hello " + e.target.id );
+                   // alert("Item with id " + e.target.id + "was removed");
                     retriveExistingLocalStorageData(items);
                     console.log(items);
                     deleteObjFromLocalStorage(items, clickedButtonIndex);

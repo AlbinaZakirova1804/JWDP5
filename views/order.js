@@ -8,14 +8,24 @@ const main = document.querySelector('main');
 const section = document.querySelector('section');
 
 let textHeader = document.createElement('h1');
-let orderNumberP =document.createElement('p');
+let orderNumberP = document.createElement('p');
+
+let itemDiv = document.createElement('ul');
+
+
+let devider = document.createElement('hr');
 let wraptotalItemsDiv = document.createElement('div');
 let qtyDiv = document.createElement('div'); let priceDiv = document.createElement('div');
 
-
+devider.setAttribute('width', '95%');
+itemDiv.setAttribute('class', 'list-group');
 wraptotalItemsDiv.setAttribute('class', 'container row');
 qtyDiv.setAttribute('class', 'col-6');
 priceDiv.setAttribute('class', 'col-6');
+
+
+createListOfItems(items, itemDiv);
+
 
 textHeader.textContent = "Thank you! Your order was placed!";
 
@@ -23,25 +33,29 @@ orderNumberP.textContent = `Order number is: `+orderNumber();
 
 var qty = totalItemInCart(items);
 
-qtyDiv.textContent ='Total items Qty ' + qty;
+qtyDiv.textContent ='Total Qty:  ' + qty;
 priceDiv.textContent = 'Total price is $' + totalCartPrice(items);
 
 
 section.appendChild(textHeader);
 section.appendChild(orderNumberP);
+section.appendChild(itemDiv);
+//section.appendChild(devider);
 section.appendChild(wraptotalItemsDiv);
 wraptotalItemsDiv.appendChild(qtyDiv);
 wraptotalItemsDiv.appendChild(priceDiv);
 
-//console.log(main);
-//orderNumber();
 let a = ' ';
+
+var items =[];
+totalCartPrice(items);
+
+
 function orderNumber(){
     let a = Math.random().toString(10).substring(2, 15); 
     return a;
 }
-var items =[];
-totalCartPrice(items);
+
 
 
 function retriveExistingLocalStorageData(items){
@@ -71,4 +85,15 @@ function totalItemInCart(items){
         var totalItemQty = items.length;
         console.log(totalItemQty);
         return totalItemQty;
+}
+
+function createListOfItems(items, itemDiv){
+
+    items = retriveExistingLocalStorageData(items);
+    items.forEach(obj=>{
+        let objDiv = document.createElement('li');
+        objDiv.setAttribute('class', "list-group-item");
+        objDiv.textContent = obj.name + " color: "+obj.color;
+        itemDiv.appendChild(objDiv);
+    })
 }
