@@ -99,11 +99,18 @@ if (localStorage.length === 0)
             }
 
              
-            )};
-
+            )
             totalCartPrice(items);
             createTotalCartPriceContent(items);
+            //validation, if cart empty dont we cant process it
             createOrderButton();
+        };
+
+           // totalCartPrice(items);
+           // createTotalCartPriceContent(items);
+            //validation, if cart empty dont we cant process it
+           // createOrderButton();
+            
             /**************************************************************/
             var allRemoveButtons = document.querySelector("#right");
 allRemoveButtons.addEventListener("click", removeItem, false);
@@ -125,6 +132,7 @@ function removeItem(e){
 
                         totalCartPrice(items);
                         updateCartPrice(items);
+                        
                     /************************************************************/
                     console.log(localStorage);
                 }
@@ -151,7 +159,7 @@ function totalCartPrice(items){
         return totalPrice;
 }
 
-function retriveExistingLocalStorageData(items){
+ function retriveExistingLocalStorageData(items){
         var retrievedData = localStorage.getItem("items");
         var items = JSON.parse(retrievedData);
         return items;
@@ -184,6 +192,8 @@ function createTotalCartPriceContent(items){
         totalPriceDiv.appendChild(totalH6);
 }
 
+
+
 function updateCartPrice(items){
 
         var div = document.getElementById('sum-price-container');
@@ -193,21 +203,30 @@ function updateCartPrice(items){
         newTotalPrice.setAttribute('id', 'sum');
         newTotalPrice.textContent = 'Total price: $'+totalCartPrice(items);
         div.appendChild(newTotalPrice);
+//input validation on empty car order
+        if (totalCartPrice(items) === 0){
+                document.getElementById('order-button-div').remove();
+        //set Local Storage empty to reduce error
+        localStorage.clear();
+        }
 }
+
+
 
 function createOrderButton(){
         //get element on web page
-        let itemDiv =document.getElementById('price sum wrap container');
+        let itemDiv =document.getElementById('price sum wrap container')
         console.log(itemDiv);
         // create new container div 
         let orderDiv = document.createElement('div');
         orderDiv.setAttribute('class', 'col-6 text-right');
+        orderDiv.setAttribute('id', 'order-button-div');
 
         // create button
         let orderButton = document.createElement('a');
         orderButton.setAttribute('class', 'btn btn-success');
         orderButton.setAttribute('id', 'order button');
-        orderButton.setAttribute('type', 'button');
+        orderButton.setAttribute('type', 'submit');
         orderButton.setAttribute('href', 'order.html');
 
         //add text to the button
@@ -216,5 +235,7 @@ function createOrderButton(){
         //build content
         itemDiv.appendChild(orderDiv);
         orderDiv.appendChild(orderButton);
-}
+} 
 
+//export { totalCartPrice };
+//export {retriveExistingLocalStorageData};

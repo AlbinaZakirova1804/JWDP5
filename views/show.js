@@ -20,7 +20,8 @@ function getParameterByName(key, url) {
 //let dynamicURL= `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
 //console.log();
 async function getData() 
-        {
+       {try                // try to load data
+         {
          let dynamicURL= `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
             //await the response of the fetch call
            let response = await fetch(dynamicURL);
@@ -28,7 +29,12 @@ async function getData()
            let data = await response.json()
             //proceed only when the second promise is resolved
             return data;
+        } catch(e){        //if it fails, catch an error      
+           console.error(e);
+        } finally {        //
+           console.log('There was an error loading data.Please make sure the server is on.');
         }
+      } 
 //call getData function
 getData()
 .then(teddy => showProduct(teddy));//show the data
@@ -135,7 +141,7 @@ function showProduct(jsonObj) {
     }
    
  //localStorage.clear();
-  item = {};
+  var item = {};
   
 //listening to color drop down click Event----------------------/
 //pick an elements from dropdown-menu//
@@ -197,7 +203,7 @@ function addToCart() {
 
 function checkForDuplicates(items, item){
   
- var obj = items.find(obj => (obj.id === item.id)&&(obj.color === item.color));
+ let obj = items.find(obj => (obj.id === item.id)&&(obj.color === item.color));
 if ( obj ) {
    console.log('you already have the same item in the same color');
    var index = items.indexOf(obj);
