@@ -4,7 +4,6 @@
 const main = document.querySelector('main');
 const section = document.querySelector('section');
 
-
 //get all json objects
 async function getData() 
        {try
@@ -13,18 +12,22 @@ async function getData()
             //await the response of the fetch call
            let response = await fetch(requestURL);
             //proceed once the first promise is resolved.
-           let data = await response.json()
+           let data = await response.json();
+           //remove error message in a case seccess 
+           
             //proceed only when the second promise is resolved
             return data;
         } catch(e)
         {
             //if it fails, catch an error      
-           console.error(e)
-        }finally
-        {   var errorMessage = document.createElement('p');
+           console.error(e);
+           var errorMessage = document.createElement('p');
             errorMessage.setAttribute('class', 'text-info text-center');
+            errorMessage.setAttribute('id', 'loading error message');
             errorMessage.textContent = "There was a loading error. Please try to refresh your page."
             document.querySelector('main').appendChild(errorMessage);
+        }finally
+        {   
             console.log('There was an error loading data.Please make sure the server is on.');
         }
     }
@@ -53,6 +56,8 @@ showProduct(teddies); } */
 
 //Creating new Elements
 function showProduct(jsonObj) {
+   
+
 const products = jsonObj;
 for (let i = 0; i < products.length; i++) {
 const newA = document.createElement('a');
