@@ -32,7 +32,11 @@ async function getData()
         } catch(e){        //if it fails, catch an error      
            console.error(e);
         } finally {        //
-           console.log('There was an error loading data.Please make sure the server is on.');
+         var errorMessage = document.createElement('p');
+         errorMessage.setAttribute('class', 'text-info text-center');
+         errorMessage.textContent = "There was a loading error. Please try to refresh your page."
+         document.querySelector('main').appendChild(errorMessage); 
+         console.log('There was an error loading data.Please make sure the server is on.');
         }
       } 
 //call getData function
@@ -198,7 +202,7 @@ function addToCart() {
          //inserting product object into local storage
          localStorage.setItem( 'items', JSON.stringify(items) );
          alertMessage.textContent = 'item successfully added to your cart';
-         
+
          //alert('item was added to the cart');
          console.log(localStorage);
    } else 
