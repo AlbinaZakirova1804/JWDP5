@@ -188,7 +188,7 @@ function addToCart() {
             var items = JSON.parse(retrievedData);
             console.log('yaeh, im an array'+items)
            
-            checkForDuplicates(items, item);
+            checkForDuplicates(items, item); //check for duplicates and push to items array
             
             console.log('local storage is not emprty');
          }
@@ -198,6 +198,7 @@ function addToCart() {
          //inserting product object into local storage
          localStorage.setItem( 'items', JSON.stringify(items) );
          alertMessage.textContent = 'item successfully added to your cart';
+         
          //alert('item was added to the cart');
          console.log(localStorage);
    } else 

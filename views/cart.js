@@ -206,6 +206,7 @@ function updateCartPrice(items){
 //input validation on empty car order
         if (totalCartPrice(items) === 0){
                 document.getElementById('order-button-div').remove();
+                
         //set Local Storage empty to reduce error
         localStorage.clear();
         }

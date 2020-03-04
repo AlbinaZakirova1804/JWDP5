@@ -21,7 +21,10 @@ async function getData()
             //if it fails, catch an error      
            console.error(e)
         }finally
-        {
+        {   var errorMessage = document.createElement('p');
+            errorMessage.setAttribute('class', 'text-info text-center');
+            errorMessage.textContent = "There was a loading error. Please try to refresh your page."
+            document.querySelector('main').appendChild(errorMessage);
             console.log('There was an error loading data.Please make sure the server is on.');
         }
     }
