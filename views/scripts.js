@@ -75,6 +75,7 @@ newImg.setAttribute('alt',"teddy bear"+i);
 newImg.setAttribute('id', products[i]._id);
 newA.setAttribute('href', `./teddy.html`+'?'+'_id='+`${products[i]._id}`);
 newDiv.setAttribute('class', 'card col-6 col-sm-4 col-lg-3');
+newH5.setAttribute('class', 'card-title');
 
 //set content
 newH5.textContent = products[i].name;
@@ -84,10 +85,14 @@ newP.textContent ='$'+ products[i].price/100;
 section.appendChild(newDiv);
 newDiv.appendChild(newA);
 
+
 newA.appendChild(newImg);
 //newDiv.appendChild(newImg);
-newDiv.appendChild(newH5);
-newDiv.appendChild(newP);
+newA.appendChild(newH5);
+newA.appendChild(newP);
+/****************************** */
+//newDiv.appendChild(newH5);
+//newDiv.appendChild(newP);
 };
 
 }

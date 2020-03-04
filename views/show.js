@@ -53,12 +53,9 @@ fetch(dynamicURL)
 
 /*let dynamicURL = `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
 let newrequest = new XMLHttpRequest();
-
 newrequest.open('GET', dynamicURL);
 newrequest.responseType = 'json'; 
 newrequest.send();
-
-
 newrequest.onload = function() { 
 const teddy = newrequest.response; 
 showProduct(teddy); }

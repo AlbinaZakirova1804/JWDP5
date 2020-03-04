@@ -45,10 +45,11 @@ section.appendChild(wraptotalItemsDiv);
 wraptotalItemsDiv.appendChild(qtyDiv);
 wraptotalItemsDiv.appendChild(priceDiv);
 
-let a = ' ';
+//let a = ' ';
 
 var items =[];
 totalCartPrice(items);
+localStorage.clear(); //empty local storage
 
 
 function orderNumber(){
