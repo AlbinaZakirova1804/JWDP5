@@ -77,7 +77,12 @@ function showProduct(jsonObj) {
    const newP = document.createElement('p');
    const newH5 = document.createElement('h5');
    const newImg = document.createElement('img');
-   const alertMessage = document.createElement('p'); //added to cart message 
+   const alertMessage = document.createElement('p'); //message if item was added to cart message 
+
+   //set attributes for alert message paragraph
+   alertMessage.setAttribute('class', 'alert alert-success');
+   alertMessage.setAttribute('id', 'added to cart');
+   alertMessage.setAttribute('role', 'alert');
 
 // create colors dropdown
    const addToCartBut = document.createElement('button');
@@ -167,6 +172,7 @@ Array.from(elements).forEach((element) => {
 //-------------------------------------------------------------
 //****************************** */
 document.getElementById('addToCart').addEventListener('click', addToCart);
+
 function addToCart() {
    // remove event listener if collor is not picked
    if (item.color !== undefined) {
@@ -201,7 +207,13 @@ function addToCart() {
         
          //inserting product object into local storage
          localStorage.setItem( 'items', JSON.stringify(items) );
+        
+         //show alert message
          alertMessage.textContent = 'item successfully added to your cart';
+
+         // close the div in 2 secs
+         window.setTimeout("closeAlertP();", 2000);
+
 
          //alert('item was added to the cart');
          console.log(localStorage);
@@ -210,6 +222,10 @@ function addToCart() {
    };
    };
 //***************************** */
+
+function closeAlertP(){
+   document.getElementById("added to cart").style.display=" none";
+   }
 
 function checkForDuplicates(items, item){
   

@@ -82,7 +82,12 @@ function retriveExistingLocalStorageData(items){
 function totalItemInCart(items){
     items = retriveExistingLocalStorageData(items);
     console.log("items in array" + items);
-        var totalItemQty = items.length;
+
+    var totalItemQty = 0;
+    items.forEach(obj=>{
+        totalItemQty = totalItemQty +obj.qty;
+        
+    })
         console.log(totalItemQty);
         return totalItemQty;
 }
@@ -93,7 +98,7 @@ function createListOfItems(items, itemDiv){
     items.forEach(obj=>{
         let objDiv = document.createElement('li');
         objDiv.setAttribute('class', "list-group-item");
-        objDiv.textContent = obj.name + " color: "+obj.color;
+        objDiv.textContent = obj.name + " color: "+obj.color+ "qty: " + obj.qty;
         itemDiv.appendChild(objDiv);
     })
 }
