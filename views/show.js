@@ -196,7 +196,7 @@ function addToCart() {
             var items = JSON.parse(retrievedData);
             console.log('yaeh, im an array'+items)
            
-            checkForDuplicates(items, item); //check for duplicates and push to items array
+            checkForDuplicates(items, item); //check for duplicates and push to items array????
             
             console.log('local storage is not emprty');
          }
@@ -206,11 +206,17 @@ function addToCart() {
          //inserting product object into local storage
          localStorage.setItem( 'items', JSON.stringify(items) );
         
+         //set alertMessage to display show
+         document.getElementById("added to cart").style.display="block";
+         
          //show alert message
-         alertMessage.textContent = 'item successfully added to your cart';
+         alertMessage.textContent = 'item successfully added to your cart';// add to duplicate function
+         
+         
+         //alert('item was added to cart');
 
          // close the div in 2 secs
-         window.setTimeout("closeAlertP();", 2000);
+         window.setTimeout("closeAlertMessage();", 2000);
 
 
          //alert('item was added to the cart');
@@ -221,7 +227,7 @@ function addToCart() {
    };
 //***************************** */
 
-function closeAlertP(){
+function closeAlertMessage(){
    document.getElementById("added to cart").style.display=" none";
    }
 
