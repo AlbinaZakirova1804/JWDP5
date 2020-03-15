@@ -99,8 +99,8 @@ function showProduct(jsonObj) {
 // set attributes to classes
    section.setAttribute('class', 'row mx-2 my-5');
 
-   aDiv.setAttribute('class', 'col-6');
-   bDiv.setAttribute('class', 'col-6')
+   aDiv.setAttribute('class', 'col-md-12 col-lg-6');
+   bDiv.setAttribute('class', 'col-md-12 col-lg-6')
 
    newImg.setAttribute('class','img-responsive rounded w-100');
    newImg.setAttribute('alt',"teddy bear "+product.name);

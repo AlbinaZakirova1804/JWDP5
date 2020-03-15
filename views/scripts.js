@@ -16,7 +16,9 @@ async function getData()
            //remove error message in a case seccess 
            
             //proceed only when the second promise is resolved
+            console.log("I am data - >  "+ data)
             return data;
+            
         } catch(e)
         {
             //if it fails, catch an error      
@@ -44,11 +46,9 @@ fetch(requestURL)
 //get json
 /*let requestURL = 'http://localhost:3000/api/teddies';
 let request = new XMLHttpRequest();
-
 request.open('GET', requestURL);
 request.responseType = 'json'; 
 request.send();
-
 request.onload = function() { 
     const teddies = request.response; 
     console.log(teddies);
@@ -75,7 +75,6 @@ newImg.setAttribute('alt',"teddy bear"+i);
 newImg.setAttribute('id', products[i]._id);
 newA.setAttribute('href', `./teddy.html`+'?'+'_id='+`${products[i]._id}`);
 newDiv.setAttribute('class', 'card col-6 col-sm-4 col-lg-3');
-newH5.setAttribute('class', 'card-title');
 
 //set content
 newH5.textContent = products[i].name;
@@ -85,14 +84,10 @@ newP.textContent ='$'+ products[i].price/100;
 section.appendChild(newDiv);
 newDiv.appendChild(newA);
 
-
 newA.appendChild(newImg);
 //newDiv.appendChild(newImg);
-newA.appendChild(newH5);
-newA.appendChild(newP);
-/****************************** */
-//newDiv.appendChild(newH5);
-//newDiv.appendChild(newP);
+newDiv.appendChild(newH5);
+newDiv.appendChild(newP);
 };
 
 }
