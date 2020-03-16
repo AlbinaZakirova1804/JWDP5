@@ -1,11 +1,18 @@
+//have to add require scripts.js
 describe('display all products on a page', function () {
-  beforeEach(function () {
-    // Make an async call, passing the special done callback        
-    getData();
-  it('-> Should be true if the async call has completed', function () {
-    expect(flag).toEqual(true);
-    //expect(object.img).toBeDefined();
-  }
-  );
+
+    // Make an async call, passing the special done callback  
+  function getData(){
+    return [{},{}]
+  };    
+  const data = getData();
+   //mock
+   //var data;
+  //data =[];
+  it('-> Should return an array of objects', function () {
+    const datatype = typeof(data);
+    console.log('This is data - >', data);
+    expect(data).toEqual([{},{}]);
+  
 })
 });

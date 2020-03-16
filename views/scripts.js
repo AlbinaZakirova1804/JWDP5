@@ -16,7 +16,6 @@ async function getData()
            //remove error message in a case seccess 
            
             //proceed only when the second promise is resolved
-            console.log("I am data - >  "+ data)
             return data;
             
         } catch(e)
@@ -54,10 +53,9 @@ request.onload = function() {
     console.log(teddies);
 showProduct(teddies); } */
 
-//Creating new Elements
-function showProduct(jsonObj) {
-   
 
+function showProduct(jsonObj) {
+//create new elements
 const products = jsonObj;
 for (let i = 0; i < products.length; i++) {
 const newA = document.createElement('a');
@@ -76,18 +74,15 @@ newImg.setAttribute('id', products[i]._id);
 newA.setAttribute('href', `./teddy.html`+'?'+'_id='+`${products[i]._id}`);
 newDiv.setAttribute('class', 'card col-6 col-sm-4 col-lg-3');
 
-//set content
+//give content
 newH5.textContent = products[i].name;
 newP.textContent ='$'+ products[i].price/100;
 
 //built page
 section.appendChild(newDiv);
 newDiv.appendChild(newA);
-
 newA.appendChild(newImg);
-//newDiv.appendChild(newImg);
 newDiv.appendChild(newH5);
 newDiv.appendChild(newP);
 };
-
 }
