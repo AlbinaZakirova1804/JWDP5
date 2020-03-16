@@ -16,9 +16,7 @@ function getParameterByName(key, url) {
    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 //*******************************************/
-//create single object url for request
-//let dynamicURL= `http://localhost:3000/api/teddies/${getParameterByName('_id')}`;
-//console.log();
+//get teddy data
 async function getData() 
        {try                // try to load data
          {
@@ -37,7 +35,7 @@ async function getData()
          document.querySelector('main').appendChild(errorMessage); 
         } finally {        //
          
-         console.log('There was an error loading data.Please make sure the server is on.');
+         console.log('There waa a data loading error.');
         }
       } 
 //call getData function
@@ -65,11 +63,10 @@ showProduct(teddy); }
 // ***************build single object content on a web page*****************
 function showProduct(jsonObj) {
    const product = jsonObj;
-   console.log(product);
 
 //create two div containers for two columns
-   const aDiv = document.createElement('div');
-   const bDiv = document.createElement('div');
+   const aDiv = document.createElement('div'); //left side for image
+   const bDiv = document.createElement('div'); //right side for description
 
 // create content inside thoes containers
    const newP = document.createElement('p');
@@ -136,10 +133,6 @@ function showProduct(jsonObj) {
    dropDown.appendChild(dropBut);
    dropBut.appendChild(dropSpan);
    dropDown.appendChild(newUl);   
-
-   
-    console.log(product.colors);
-    console.log(product.colors.length);
    
    //building colors in drop down
    for (var i=0; i<product.colors.length; i++){
@@ -150,8 +143,7 @@ function showProduct(jsonObj) {
        dropItem.textContent = product.colors[i];
        newUl.appendChild(dropItem);
     }
-   
- //localStorage.clear();
+//defined global variable item object
   var item = {};
   
 //listening to color drop down click Event----------------------/
@@ -168,52 +160,39 @@ Array.from(elements).forEach((element) => {
    });
 });
 //-------------------------------------------------------------
-//****************************** */
+//***********listening for ***click on "add to cart" button**************/
 document.getElementById('addToCart').addEventListener('click', addToCart);
 
 function addToCart() {
-   // remove event listener if collor is not picked
+   // do something if color was picked or show error message if color was not picked
+   //color validation
    if (item.color !== undefined) {
-         console.log(product.name);
-         //item.color=getColor;
          item.id = product._id
          item.name = product.name;
          item.qty = 1;
          item.price = product.price/100;
-         console.log( item );
-         console.log(item.color);
-
          var items = [];
 
+         /*push new object into local storage if it is empty if local storage is not empty,
+          retrive all objects into items array push new object intp it*/
          if (localStorage.length === 0)
          {      
-
-            console.log('local storage is empty')
             items.push(item);
          }else
          {
             var retrievedData = localStorage.getItem("items");
             var items = JSON.parse(retrievedData);
-            console.log('yaeh, im an array'+items)
-           
             checkForDuplicates(items, item); //check for duplicates and push to items array????
-            
-            console.log('local storage is not emprty');
          }
-         
-         console.log(items);
         
-         //inserting product object into local storage
+         //inserting all object into local storage
          localStorage.setItem( 'items', JSON.stringify(items) );
         
-         //set alertMessage to display show
+         //set alertMessage to display "show"
          document.getElementById("added to cart").style.display="block";
          
          //show alert message
          alertMessage.textContent = 'item successfully added to your cart';// add to duplicate function
-         
-         
-         //alert('item was added to cart');
 
          // close the div in 2 secs
          window.setTimeout("closeAlertMessage();", 2000);
@@ -226,13 +205,13 @@ function addToCart() {
    };
    };
 //***************************** */
-
+//hide alert message in 2 sec
 function closeAlertMessage(){
    document.getElementById("added to cart").style.display=" none";
    }
 
+//check for duplicates in items array and add qty if it exists if not just push into array
 function checkForDuplicates(items, item){
-  
  let obj = items.find(obj => (obj.id === item.id)&&(obj.color === item.color));
 if ( obj ) {
    console.log('you already have the same item in the same color');
@@ -244,15 +223,3 @@ if ( obj ) {
    console.log('new item was added to your carts');
 }
 };
-
-function colorValidation(item){
-   if (item.color !== undefined) {
-      console.log(product.name);
-      //if color exist creat an object
-      item.id = product._id
-      item.name = product.name;
-      item.qty = 1;
-      item.price = product.price/100;
-      console.log( item );
-      console.log(item.color);
-}}

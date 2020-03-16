@@ -1,4 +1,4 @@
-
+//show all products on a web page
 
 //select elements on html
 const main = document.querySelector('main');
