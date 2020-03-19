@@ -1,0 +1,59 @@
+[33mf7d1438[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m cleaned html templates
+[33m9597b22[m cleaned code in cart.js file
+[33mf2e8254[m cleaned code in order.js file
+[33mae99a5c[m cleaned code in show.js
+[33mfbb84a7[m cleaned code in scripts.js
+[33me720b24[m show.js was addpted responsive layout depending on a device screen size
+[33m1c6a944[m initialized jasmine
+[33m9294786[m installes jasmine dependency
+[33mf60a029[m bug was fixed with recurrence  of alertMessage when same item was added to the cart
+[33m107cdab[m fixed bug with loading error message
+[33m0ebdf95[m cleared local storage by adding localStorage.clear() function in the end of order js file
+[33m78881ad[m fixed loading error message bug on index page
+[33maef4daa[m fixed bug in function totalItemInCart(items){
+[33m619cd7d[m jasmin test framework was installed
+[33me36b37f[m added error message on single product page if data cannot be fetched
+[33m200d68f[m error message was added to index page in case of loading data error
+[33mef95365[m added qty and total price to order page as well as localStorage.clear()
+[33m0c751a2[m built order page and added new fields item qty and price
+[33m16795bd[m added validation if total price is empty in update total price function to remove the order button if total price is equal to a 0
+[33m4c91ab2[m Order conf. and order number was implemented on order page
+[33m1f32922[m Created files order.html and order.js as well as linked order button to order.html page
+[33m4276b9b[m built order button and updated get Object/data/teddy/teddies function
+[33ma824e71[m changed jsom call function to asyn call using fetch
+[33m258ee22[m added function removeItem for event listenerand fixed bug with updating cart content after removal of item
+[33m4783def[m added function updateCartPrice
+[33mf0a54f8[m fixed bug within add to cart function
+[33m8ba0ded[m added color attribute to remove buttons
+[33m02986ed[m setting event listener on remove buttons
+[33mae485bf[m changed how content is set, adde two containers to wrap iteminfo and remove button areas
+[33mdd7ed58[m fixed bug with a price, now its is showing price depend on a quantity of items
+[33m667832a[m created totalCartPrice function and retriveExistingLocalStorageData function
+[33m1e36984[m added function to check for duplicates in local storage
+[33m5be42a7[m built basic cart view
+[33m145df2b[m fixed bug with adding elements in empty storage
+[33ma13eb61[m local storage can save an array of objects
+[33m11a7c2f[m dropdown button shows picked color option
+[33m95c4f7b[m started developing cart page
+[33mb951c8e[m add event listener for addTocart button was modified, it does not add item in the cart if color wasn't picked
+[33mf2b1d57[m got item color into cart local storage
+[33m7e67c49[m added listener event to store values in local storage
+[33mff8e2e2[m sent params through url and get them complite
+[33m930492c[m added product id to url for a single item page
+[33mc23d7b7[m initial commit
+[33mb91daea[m created partial hedear.html
+[33md90519f[m created compressed folder for minifyed imgs as well img was minifyed
+[33mc76e901[m created header tags in index.html file for navigation
+[33m3f5b759[m created and edditted scripts.js in order to render product imges, names and prices on index.html page
+[33m9a60999[m Removing idea folder
+[33m1e7fe5d[m Removing idea folder
+[33m46cc4f1[m Updated README
+[33mbf46a7f[m Derp, spelled README correctly this time
+[33mb059109[m Added README
+[33m7ed1bfe[m Initial commit
+[33mce394d4[m Images now returned with correct path
+[33mfdeb6d2[m All endpoints technically functional
+[33m799ca30[m Models updated
+[33m85317a7[m Camera endpoints complete
+[33m08d9410[m app.js and server.js set up
+[33m741f8f3[m Initial commit
